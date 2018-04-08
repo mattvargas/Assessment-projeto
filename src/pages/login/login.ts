@@ -20,8 +20,6 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public web : HttpClient, public service : MoodleService) {}
 
-
-
               voltarPage(){
               this.navCtrl.pop();
 }

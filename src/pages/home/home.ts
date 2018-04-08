@@ -12,17 +12,19 @@ export class HomePage {
 
     usuario : any
     senha : any
-    tok : string
+    tok : any
+  param1:any
   constructor(public navCtrl: NavController, public navParams : NavParams,
               public service : MoodleService, public web : HttpClient,) {
 
   }
-
-  logarApi( ){
-      this.service.executaLogin(this.usuario,this.senha)
-      .subscribe(data=>this.service.salvaToken(this. tok = JSON.stringify(data) ));
+  logarApi(){
+    this.service.executaLogin(this.usuario,this.senha)
+      .subscribe(data => {
+        this.tok = (JSON.stringify(data));
+        this.service.salvaToken(this.tok);
         this.navParams.get(this.tok);
-      this.navCtrl.push(LoginPage);
+        this.navCtrl.push(LoginPage);
+      });
   }
-
 }
