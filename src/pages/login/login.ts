@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HttpClient} from "@angular/common/http";
 import {MoodleService} from "../../providers/moodle/moodle";
+import {ListPage} from "../list/list";
 
 /**
  * Generated class for the LoginPage page.
@@ -17,12 +18,24 @@ import {MoodleService} from "../../providers/moodle/moodle";
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              public web : HttpClient, public service : MoodleService) {}
 
-              voltarPage(){
-              this.navCtrl.pop();
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public web: HttpClient, public service: MoodleService) {
+
+    this.service.getID(this.navParams.data);
+  }
+
+
+
+listarMaterias(){
+
+    this.listarMaterias();
 }
 
 
+
+  voltarPage() {
+    this.navCtrl.pop();
+
+  }
 }

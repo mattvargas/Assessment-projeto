@@ -26,5 +26,8 @@ export class HomePage {
         this.navParams.get(this.tok);
         this.navCtrl.push(LoginPage);
       });
+
   }
+
+
 }
