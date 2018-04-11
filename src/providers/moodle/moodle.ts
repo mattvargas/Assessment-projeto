@@ -17,10 +17,13 @@ export class MoodleService {
 
 
   }
-  retornaListaUsuarios(){
-    return this.web.get(this.urlAPI + '/login' , {
 
-    })
+    listaMateria(token,ID){
+      let formulario = new FormData();
+      formulario.append('wstoken', token);
+      formulario.append('moodlewsrestformat', 'json');
+      formulario.append('wsfunction', 'core_enrol_get_users_courses')
+      formulario.append('userid',ID);
   }
 
   verificarToken(){
