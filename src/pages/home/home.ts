@@ -21,10 +21,10 @@ export class HomePage {
   logarApi(){
     this.service.executaLogin(this.usuario,this.senha)
       .subscribe(data => {
-        this.tok = (JSON.stringify(data));
+        this.tok = JSON.stringify(data);
         this.service.salvaToken(this.tok);
-        this.navParams.get(this.tok);
         this.navCtrl.push(LoginPage);
       });
+
   }
 }
