@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import {LocalStorage} from"@ngx-pwa/local-storage"
 @Injectable()
 export class MoodleService {
-  urlAPI = ' https://lms.infnet.edu.br/moodle/login/token.php';
+  urlAPI = 'https://lms.infnet.edu.br/moodle/login/token.php';
   urlAPI2='https://lms.infnet.edu.br/moodle/webservice/rest/server.php'
-  constructor(public web : HttpClient ) { }
+  constructor(public web : HttpClient , protected localStorage: LocalStorage) { }
 
   executaLogin(usuario, senha) {
     let formulario = new FormData();
@@ -31,30 +31,38 @@ export class MoodleService {
     formulario.append('moodlewsrestformat', 'json');
     formulario.append('wsfunction', 'core_enrol_get_users_courses')
     formulario.append('userid', id);
-
+      return this.web.post(this.urlAPI2,formulario);
   }
 
   verificarToken(){
-    if (localStorage.getItem('token')){
+    if (this.localStorage.getItem('token')){
       return true
     }
     return false
   }
   salvaToken(token){
-    localStorage.setItem('token', token);
+    return this.localStorage.setItem('token', token)
   }
 
   retornaToken(){
-    return localStorage.getItem('token');
+    return this.localStorage.getItem('token')
   }
 
   salvarID(dadosUsuario){
-    return localStorage.setItem('usuario', dadosUsuario);
+    return this.localStorage.setItem('usuario', dadosUsuario)
   }
 
   pegarID(){
+    return this.localStorage.getItem('usuario')
 
-    return localStorage.getItem('usuario')
+  }
+
+  criarMaterias(materias){
+     return this.localStorage.setItem('materia', materias)
+
+  }
+  pegarMaterias(){
+    return this.localStorage.getItem('materia')
   }
 
 }

@@ -13,7 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MoodleService } from '../providers/moodle/moodle';
 import { HttpClientModule} from "@angular/common/http";
-
+import { LocalStorageModule } from '@ngx-pwa/local-storage'
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    LocalStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
